@@ -20,6 +20,16 @@ const routes = [
         component: () => import('../views/Projects.vue'),
       },
       {
+        path: 'waiting',
+        name: 'waiting',
+        component: () => import('../views/WaitingList.vue'),
+      },
+      {
+        path: 'project/:id',
+        name: 'project',
+        component: () => import('../views/Project.vue'),
+      },
+      {
         path: 'users',
         name: 'users',
         component: () => import('../views/Users.vue'),
