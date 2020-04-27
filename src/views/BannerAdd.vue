@@ -17,8 +17,11 @@
           label-width="100px"
           class="demo-ruleForm"
         >
-          <el-form-item label="轮播内容" prop="title">
+          <el-form-item label="轮播标题" prop="title">
             <el-input v-model="banner.title" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="轮播背景">
+            <el-input v-model="banner.bgcolor" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item label="轮播图片">
             <el-upload
@@ -31,8 +34,9 @@
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
           </el-form-item>
-          <el-form-item label="轮播背景">
-            <el-input v-model="banner.bgcolor" auto-complete="off"></el-input>
+
+          <el-form-item>
+            <vue-editor v-model="banner.content" />
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm">提交</el-button>
@@ -44,13 +48,15 @@
 </template>
 
 <script>
+import { VueEditor } from "vue2-editor";
 export default {
   data() {
     return {
       banner: {
         title: "",
         img: "",
-        bgcolor: "background-color:#000"
+        bgcolor: "background-color:#000",
+        content: ""
       },
       rules: {
         title: [
@@ -65,6 +71,9 @@ export default {
       }
     };
   },
+  components: {
+    VueEditor
+  },
   methods: {
     submitForm() {
       this.$refs["ruleForm"].validate(valid => {
@@ -76,8 +85,7 @@ export default {
           this.banner.createTime = new Date();
           this.$http.post("/banner/create", this.banner).then(res => {
             this.$message.success(`成功添加${res.data.title}`);
-            this.banner.img = "";
-            this.banner.title = "";
+            this.$router.push('/bannerlist')
           });
         } else {
           return false;

@@ -9,7 +9,7 @@
     >
       <el-table-column prop="userName" label="用户"></el-table-column>
       <el-table-column prop="createdTime" label="注册时间" :formatter="formatTime"></el-table-column>
-      <el-table-column prop="adminFlag" label="管理员"></el-table-column>
+      <el-table-column prop="adminFlag" label="管理员" :formatter="formatAdmin"></el-table-column>
       <el-table-column prop="phone" label="电话"></el-table-column>
       <el-table-column prop="email" label="邮箱"></el-table-column>
       <el-table-column prop="address" label="用户地址"></el-table-column>
@@ -27,6 +27,9 @@ export default {
   methods: {
     formatTime(row) {
       return row.createdTime.slice(0, 10);
+    },
+    formatAdmin(row) {
+      return row.adminFlag === true ? "是" : "否";
     }
   },
   created() {

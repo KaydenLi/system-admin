@@ -110,6 +110,7 @@ export default {
       }
       this.$http.post("/admin/login", this.model).then(res => {
         localStorage.token = res.data.token;
+        localStorage.userName = res.data.userInfo.userName;
         this.$message.success(`登录成功!欢迎 ${res.data.userInfo.userName}`);
         this.$router.push("/index");
       });

@@ -71,20 +71,22 @@ export default {
         .catch(err => {
           window.console.log(err);
         });
+    },
+    viewProject(id) {
+      this.$router.push(`/project/${id}`);
     }
   },
   created() {
     this.$http.get("/project/count").then(res => {
       this.total = res.data;
+      this.$http
+        .get(
+          `/project/list?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`
+        )
+        .then(res => {
+          this.projects = res.data;
+        });
     });
-    this.$http
-      .get(
-        `/project/list?pageSize=${this.pageSize}&pageNumber=${this.pageNumber}`
-      )
-      .then(res => {
-        this.projects = res.data;
-        // window.console.log(res.data);
-      });
   }
 };
 </script>

@@ -1,40 +1,20 @@
 <template>
   <div>
-    <el-row>
-      <el-col
-        class="border"
-        :xs="{span: 24, offset: 0}"
-        :sm="{span: 20, offset: 2}"
-        :md="{span: 20, offset: 2}"
-        :lg="{span: 18, offset: 3}"
-        :xl="{span: 18, offset: 3}"
-      >
-        <div v-if="status">
-          <el-card :body-style="{ padding: '0px' }" v-for="banner in banners" :key="banner._id">
-            <img class="img" :src="banner.img" alt />
-            <div style="padding: 14px;">
-              <span>{{banner.title}}</span>
-              <div class="bottom clearfix">
-                <time class="time">首发时间：{{ banner.createTime.slice(0,10) }}</time>
-                <el-button
-                  type="danger"
-                  size="mini"
-                  class="button"
-                  @click="deleteBanner(banner._id)"
-                >删除</el-button>
-                <el-button
-                  type="primary"
-                  size="mini"
-                  class="button"
-                  @click="editBanner(banner._id)"
-                >编辑</el-button>
-              </div>
-            </div>
-          </el-card>
+    <div v-if="status" class="container">
+      <el-card :body-style="{ padding: '0px' }" v-for="banner in banners" :key="banner._id">
+        <img class="img" :src="banner.img" alt />
+        <div style="padding: 14px;">
+          <span>{{banner.title}}</span>
+          <div class="bottom clearfix">
+            <time class="time">首发时间：{{ banner.createTime.slice(0,10) }}</time>
+            <el-button type="danger" size="mini" class="button" @click="deleteBanner(banner._id)">删除</el-button>
+            <el-button type="primary" size="mini" class="button" @click="editBanner(banner._id)">编辑</el-button>
+          </div>
         </div>
-        <div v-else>暂时没有轮播图</div>
-      </el-col>
-    </el-row>
+      </el-card>
+    </div>
+
+    <div v-else>暂时没有轮播图</div>
   </div>
 </template>
 
@@ -82,7 +62,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .no-banner {
   text-align: center;
   color: #909399;
@@ -120,6 +100,13 @@ export default {
   width: 100%;
 }
 .el-card {
-  margin: 20px 0;
+  margin: 20px;
+  width: 600px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 </style>

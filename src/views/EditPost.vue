@@ -90,7 +90,7 @@ export default {
           this.$http
             .post(`/post/update/${this.$route.params.id}`, form)
             .then(() => {
-              this.$message.success("文章更新成功!");
+              this.$message.success("通告更新成功!");
               this.$router.push("/postlist");
             });
         } else {
@@ -99,7 +99,7 @@ export default {
       });
     },
     cancel() {
-      this.$message.info("已取消更新文章");
+      this.$message.info("已取消更新通告");
       this.$router.push("/postlist");
     }
   },

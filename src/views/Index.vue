@@ -30,6 +30,9 @@
             <el-menu-item index="/projects">
               <i class="menu-item-icon el-icon-minus"></i>项目管理
             </el-menu-item>
+             <el-menu-item index="/waiting">
+              <i class="menu-item-icon el-icon-minus"></i>授权管理
+            </el-menu-item>
           </el-menu-item-group>
         </el-submenu>
 
