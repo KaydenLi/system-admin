@@ -9,6 +9,9 @@
       <el-table-column prop="userName" label="申请人"></el-table-column>
       <el-table-column prop="projectName" label="项目名称"></el-table-column>
       <el-table-column prop="createTime" :formatter="formatTime" label="申请时间"></el-table-column>
+      <el-table-column prop label="申请理由">
+        <el-button @click="pass(scope.row._id)" type="text" size="mini">详情</el-button>
+      </el-table-column>
       <el-table-column fixed="right" label="操作" width="180">
         <template slot-scope="scope">
           <el-button @click="pass(scope.row._id)" type="primary" size="mini">通过</el-button>

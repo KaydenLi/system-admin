@@ -13,7 +13,6 @@
         </div>
       </el-card>
     </div>
-
     <div v-else>暂时没有轮播图</div>
   </div>
 </template>
